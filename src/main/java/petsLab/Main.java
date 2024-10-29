@@ -17,5 +17,8 @@ public class Main {
 
         System.out.println(pets); //see order of pets after sorting
 
+        Collections.sort(pets, new newComparator());
+
+        System.out.println(pets);
     }
 }

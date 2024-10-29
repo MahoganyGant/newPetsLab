@@ -3,7 +3,7 @@ package petsLab;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Pet implements Comparable<Pet>{
+public class Pet implements Comparable<Pet> {
     private String name;
 
     public Pet(String name) {
@@ -67,24 +67,26 @@ public class Pet implements Comparable<Pet>{
 
     @Override
     public int compareTo(Pet o) {
-        // Compare by class name (type)
-        String thisType = this.getClass().getSimpleName(); //gets name of current object
-        String otherType = o.getClass().getSimpleName();
-        int typeComparison = thisType.compareTo(otherType);
+        // Compare by name (sorts alphabetically) Part 1
+        int nameComparison = this.name.compareTo(o.name);
 
-        // If types are different, return the result
-        if (typeComparison != 0) {
-            return typeComparison;
+        // If names are different, return the result
+        if (nameComparison != 0) {
+            return nameComparison;
         }
 
-        // If types are the same, compare by name (sorts alphabetically)
-        return this.name.compareTo(o.name);
+        // If names are the same, compare by class name (type) "breaking ties by class"
+        String thisType = this.getClass().getSimpleName(); // gets name of current object
+        String otherType = o.getClass().getSimpleName();
+        return thisType.compareTo(otherType);
     }
+
 
     @Override
     public String toString() {
         return "\n" + "Pet Names + Types" + "\n" + "Name: " + this.getName() + " Type: " + this.getClass().getSimpleName() + "\n";
     }
+
 }
 
 
